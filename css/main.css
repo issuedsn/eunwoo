@@ -166,6 +166,10 @@
   .vlog-container__maintit {
     font-size: 3.3vw;
   }
+  .open-day {
+    font-size: 3.5vw;
+    font-weight: 700;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1080px) {
