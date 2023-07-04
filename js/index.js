@@ -1,33 +1,30 @@
-const dDay = document.querySelector(".d_day--now");
-const dDaytit = document.querySelector(".d_day--tit");
+const dDay = new Date("2023-10-22");
+const dDay2 = new Date("2023-07-22");
+const localDDay = new Date(
+  dDay.getTime() + dDay.getTimezoneOffset() * 60 * 1000
+);
 
-// You're gonna need this
-function getTime() {
-  // Don't delete this.
-  // 크리스마스 이브 날짜
-  const xmasDay = new Date("2023-10-22:00:00:00+0900");
-  // 현재 날짜
-  const today = new Date();
+let days = Math.floor((localDDay - new Date()) / (1000 * 60 * 60 * 24));
+let hours = Math.floor((localDDay - new Date()) / (1000 * 60 * 60)) % 24;
+let minutes = Math.floor((localDDay - new Date()) / (1000 * 60)) % 60;
+let seconds = Math.floor((localDDay - new Date()) / 1000) % 60;
 
-  // 크리스마스 까지 남은 날짜 per millsecond
-  const milliSecond = xmasDay - today;
+const intervalId = setInterval(() => {
+  days = Math.floor((localDDay - new Date()) / (1000 * 60 * 60 * 24));
+  hours = Math.floor((localDDay - new Date()) / (1000 * 60 * 60)) % 24;
+  minutes = Math.floor((localDDay - new Date()) / (1000 * 60)) % 60;
+  seconds = Math.floor((localDDay - new Date()) / 1000) % 60;
 
-  // 남을 날짜를 일,시간,분,초 로 나눔
-  const second = Math.floor((milliSecond / 1000) % 60);
-  const minute = Math.floor((milliSecond / 1000 / 60) % 60);
-  const hour = Math.floor(milliSecond / 1000 / 60 / 60) % 24;
-  const day = Math.floor(milliSecond / 1000 / 60 / 60 / 24);
+  document.getElementById("d-day").innerHTML = `
+  D-day: ${days}일 ${hours < 10 ? "0" + hours : hours}시간 ${
+    minutes < 10 ? "0" + minutes : minutes
+  }분 ${seconds < 10 ? "0" + seconds : seconds}초
+  `;
+  document.getElementById("open-day").innerHTML = `${days}일 후 공개`;
+  document.getElementById("open-day2").innerHTML = `${days}일 후 공개`;
+}, 1000);
 
-  // d-day 문자열 생성
-  const dDayInfo = `${day}day ${hour}hour ${minute}minute ${second}second`;
-
-  dDay.innerText = dDayInfo;
-  dDay.style = "color:#fff;";
-  dDaytit.style = "color:#fff";
-}
-
-function init() {
-  getTime();
-  setInterval(getTime, 1000);
-}
-init();
+// clear the interval when the page is unloaded
+window.addEventListener("unload", () => {
+  clearInterval(intervalId);
+});

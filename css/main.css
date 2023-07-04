@@ -4,67 +4,51 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "pretendard";
+  text-decoration: none;
 }
 
-body {
-  background: #000;
-}
-
-.container {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-}
-
-.container video {
-  width: 100%;
-  height: 100%;
-}
-
-.text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: #000;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "SCoreDream";
-  font-size: 8vw;
-  text-transform: uppercase;
-  font-weight: 900;
-  mix-blend-mode: multiply;
-}
-
-.kew {
+/* .kew {
   position: absolute;
   color: #fff;
   width: 100%;
   height: 100%;
-  top: -9vw;
+  top: -30%;
   z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: pretendard;
   font-size: 1vw;
+} */
+
+.container {
+  width: 100vw;
+  position: relative;
 }
 
-#d_day {
+.text {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  top: 13vw;
-  font-size: 2vw;
+  margin: 0 0 5% 0;
+  font-family: "SCoreDream";
+  font-size: 11vw;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #f35626;
+  background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 10s infinite linear;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
 }
 
 .btn_container {
@@ -74,17 +58,130 @@ body {
   width: 100%;
   height: 90px;
   background-color: #4681f4;
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
 }
 
 .btn_boom a {
-  font-family: pretendard;
-  font-size: 4vw;
+  font-size: 2vw;
   font-weight: 500;
   width: 100%;
-  color: #fff;
   background-color: #4681f4;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
+  text-decoration: none;
+}
+
+/* 카운트다운 attribute */
+.day_countdown {
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "SCoreDream";
+  font-size: 2.5vw;
+  font-weight: 100;
+  margin: 4% 0 4% 0;
+}
+
+.day_countdown--tit {
+  font-size: 1.5vw;
+  font-weight: 100;
+}
+
+.vlog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 10% 0;
+  gap: 30px;
+}
+
+.vlog-wrapper {
+  position: relative;
+}
+
+.vlog-wrapper img {
+  width: 25vw;
+  height: auto;
+  filter: brightness(20%);
+}
+.vlog-wrapper a {
+  color: #000;
+}
+
+.vlog-container__subtit {
+  margin: 5% 0 3% 0;
+  width: 20%;
+  padding: 2%;
+  font-size: 13px;
+  text-align: center;
+  background: #f35626;
+  color: #fff;
+  border-radius: 300px;
+}
+.vlog-container__maintit {
+  font-size: 1.5vw;
+}
+
+.open-day {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2vw;
+  color: #fff;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  /* 모바일 디바이스에서 적용할 CSS */
+  .day_countdown--tit {
+    font-size: 3.5vw;
+  }
+  .day_countdown {
+    font-size: 5vw;
+  }
+  .text {
+    font-size: 11vw;
+  }
+
+  .btn_boom a {
+    font-size: 5vw;
+  }
+  .vlog-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 20% 0;
+  }
+  .vlog-wrapper img {
+    width: 40vw;
+    height: auto;
+  }
+  .vlog-container__maintit {
+    font-size: 3.3vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1080px) {
+  .kew {
+    /* 768px보다 넓은 모바일 디바이스에서 적용할 CSS */
+    font-size: 5vw;
+    top: -13vw;
+  }
+  .text {
+    font-size: 12vw;
+  }
+}
+
+@media (min-width: 1081px) {
+  .kew {
+    /* 1080px보다 넓은 모바일 디바이스에서 적용할 CSS */
+    font-size: 3vw;
+  }
 }
